@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.dodo.mybatis.UserDAO">
+
+	<resultMap id="User" type="org.dodo.vo.UserVO">
+		<result property="num" column="unum"/>
+		<result property="id" column="id" />
+		<result property="pwd" column="pwd" />
+		<result property="name" column="name" />
+		<result property="email" column="email" />
+		<result property="que" column="question" />
+		<result property="ans" column="answer" />
+		<result property="phone" column="phone" />
+		<result property="regdate" column="joindate" />
+		<result property="authority" column="authority" />
+		<result property="enabled" column="enabled" />
+		
+		<collection property="cList" column="hnum" javaType="ArrayList"
+			ofType="org.dodo.vo.CategoryVO">
+			<id property="num" column="hnum" />
+			<result property="hobby" column="hobby" />
+			<result property="id" column="id" />
+		</collection>
+		
+		<collection property="ubList" column="unum" javaType="ArrayList"
+			ofType="org.dodo.vo.UserBoardVO">
+			<id property="num" column="unum" />
+			<result property="masterid" column="id" />
+			<result property="author" column="gbauthor" />
+			<result property="title" column="gbtitle" />
+			<result property="bdate" column="gbdate" />
+			<result property="uref" column="uref" />
+			<result property="secretnum" column="secretvalue" />
+		</collection>
+
+		<collection property="uList" column="unum" javaType="ArrayList"
+			ofType="org.dodo.vo.UListVO">
+			<id property="num" column="unum" />
+			<result property="id" column="id" />
+			<result property="pwd" column="pwd" />
+			<result property="name" column="name" />
+			<result property="email" column="email" />
+			<result property="que" column="question" />
+			<result property="ans" column="answer" />
+			<result property="hobby" column="hobby" />
+			<result property="phone" column="phone" />
+			<result property="regdate" column="joindate" />
+			<result property="authority" column="authority" />
+			<result property="enabled" column="enabled" />
+		</collection>
+</resultMap>
+
+
+<!-- 회원가입 -->
+	<insert id="setUserSave" parameterType="org.dodo.vo.UserVO">
+		insert into boarduser
+		(UNUM, ID,PWD,NAME,EMAIL,QUESTION,ANSWER,HOBBY,PHONE,JOINDATE,AUTHORITY,ENABLED)
+		values (USER_SQ_NUM.nextval, #{id}, #{pwd},#{name},#{email},#{que},#{ans},#{hobby},#{phone},sysdate,#{authority},#{enabled})
+	</insert>
+
+
+<!-- ID찾기 -->
+	<select id="getUserIdFind" parameterType="org.dodo.vo.UserVO"
+		resultMap="User">
+		select id from boarduser where name=#{name} and
+		email=#{email}
+	</select>
+
+<!-- PWD찾기 -->
+	<update id="getUserPwdFind" parameterType="org.dodo.vo.UserVO">
+		UPDATE boarduser set
+		pwd = #{pwd} WHERE question=#{que} and
+		answer=#{ans} and id=#{id} and
+		email=#{email}
+	</update>
+	
+<!-- ID체크 -->
+	<select id="getIdCheck" parameterType="String" resultType="org.dodo.vo.UserVO">
+		SELECT NVL(max(id), 'false') id FROM boarduser WHERE id = #{id}
+	</select>
+
+<!-- 회원정보 가져오기 -->
+	<select id="getUserModify" parameterType="String" resultMap="User">
+		SELECT ID,NAME,EMAIL,QUESTION,ANSWER,PHONE FROM
+		boarduser WHERE id = #{id}
+	</select>
+	
+<!-- 유저비밀번호 -->
+	<select id="getUserPwd" parameterType="org.dodo.vo.UserVO" resultMap="User">
+		SELECT pwd from boarduser where unum = #{num}
+	</select>
+	
+<!-- 유저 번호 -->
+	<select id="getUserNum" parameterType="String" resultMap="User">
+		SELECT UNUM FROM boarduser WHERE id = #{id}
+	</select>
+	
+<!-- 회원탈퇴  -->
+	<update id="getUserDrawal" parameterType="HashMap">
+		UPDATE boarduser set enabled = 0 WHERE id=#{id} and pwd=#{pwd}
+	</update>
+    
+<!-- 비밀번호 변경  -->
+    <update id="setNewPwdChange" parameterType="org.dodo.vo.UserVO">
+		UPDATE boarduser set pwd=#{pwd} WHERE id=#{id}
+	</update>
+	
+<!-- 회원정보변경 -->
+	<update id="getUserModf" parameterType="org.dodo.vo.UserVO">
+		 MERGE INTO boarduser a
+         USING dual
+         on(a.id = #{id}) 
+         WHEN MATCHED THEN
+         UPDATE SET
+         a.question = #{que},
+         a.answer = #{ans},
+         a.name = #{name},
+         a.email = #{email},
+         a.phone = #{phone}
+	</update>
+	
+<!-- 관심분야(카테고리) 저장 -->
+	<insert id="setUserHobby" parameterType="HashMap">
+		insert into hobbycategory(HOBBY,ID,hnum)
+		values (#{hobby},#{id},HOBBY_SQ_NUM.NEXTVAL)
+	</insert>
+	
+<!-- 관심분야(카테고리) 로드 -->
+	<select id="getHobbyList" parameterType="String" resultType="org.dodo.vo.CategoryVO">
+		select hobby from hobbycategory where id = #{id}
+	</select> 
+  
+</mapper>

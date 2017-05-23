@@ -353,4 +353,10 @@ public class BoardSVC {
 		List<CategoryVO> list = udao.getHobbyList(blist.getAuthor());
 		return list;
 	}
+
+
+	public BoardVO getMyWriteList(String id) {
+		BoardDAO bdao = sqlSessionTemplate.getMapper(BoardDAO.class);
+		return bdao.getMyWriteList(id);
+	}
 }

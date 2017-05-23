@@ -94,7 +94,7 @@ margin: 0px auto;
                         <li><a href="../../bc/main/boardList?page=1&cat=${c.hobby}">${c.hobby}</a></li>
                     	</c:forEach>
                         <li class="divider"></li>
-                        <li><a href="#">Read More</a>
+                       <li><a href="/Dodo/bc/main/writeList?id=${USERID}">내가 쓴 글</a></li>
                         </li>
                    </ul>
   
@@ -144,7 +144,6 @@ margin: 0px auto;
                         <li class="nav-item"><a class="nav-link" href="../../bc/main/boardList?cat=Game&page=1">게임</a></li>
                     </ul>
                 </li>
-                <li class="nav-item"><a class="nav-link" href="../../bc/main/boardList?page=1">리스트[테스트용]</a></li>
             </ul>
         </div>
      </div>   

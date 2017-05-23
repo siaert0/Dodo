@@ -228,7 +228,7 @@
 								<li><a href="../../bc/main/boardList?page=1&cat=${c.hobby}">${c.hobby}</a></li>
 							</c:forEach>
 							<li class="divider"></li>
-							<li><a href="#">Read More</a></li>
+							<li><a href="/Dodo/bc/main/writeList?id=${USERID}">내가 쓴 글</a></li>
 						</ul>
 					<li class="nav-item"><a class="nav-link"
 						href="../../mc/Main/setup"> <i class="fa fa-cogs fa-3x"

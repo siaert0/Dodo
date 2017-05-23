@@ -97,7 +97,7 @@ h2 {
 								<li><a href="../../bc/main/boardList?page=1&cat=${c.hobby}">${c.hobby}</a></li>
 							</c:forEach>
 							<li class="divider"></li>
-							<li><a href="">Read More</a></li>
+							<li><a href="/Dodo/bc/main/writeList?id=${USERID}">내가 쓴 글</a></li>
 						</ul>
 					<li class="nav-item"><a class="nav-link"
 						href="../../mc/Main/setup"> <i class="fa fa-cogs fa-3x"
@@ -230,54 +230,14 @@ h2 {
 							</p>
 						</div>
 					</div>
-
-
 				</div>
 				<br>
-
-
-				<!-- 개발자 사진 -->
-				<div class="row placeholders mb-3">
-					<div class="col-6 col-sm-3 placeholder text-center">
-						<img src="//placehold.it/200/dddddd/fff?text=1"
-							class="center-block img-fluid rounded-circle"
-							alt="Generic placeholder thumbnail">
-						<h4>강진영</h4>
-						<span class="text-muted">Device agnostic</span>
-					</div>
-					<div class="col-6 col-sm-3 placeholder text-center">
-						<img src="//placehold.it/200/e4e4e4/fff?text=2"
-							class="center-block img-fluid rounded-circle"
-							alt="Generic placeholder thumbnail">
-						<h4>이호병</h4>
-						<span class="text-muted">UI / UX oriented</span>
-					</div>
-					<div class="col-6 col-sm-3 placeholder text-center">
-						<img src="//placehold.it/200/d6d6d6/fff?text=3"
-							class="center-block img-fluid rounded-circle"
-							alt="Generic placeholder thumbnail">
-						<h4>박정호</h4>
-						<span class="text-muted">Standards-based</span>
-					</div>
-					<div class="col-6 col-sm-3 placeholder text-center">
-						<img src="//placehold.it/200/e0e0e0/fff?text=4"
-							class="center-block img-fluid rounded-circle"
-							alt="Generic placeholder thumbnail">
-						<h4>유현지</h4>
-						<span class="text-muted">CSS and JavaScript</span>
-					</div>
-				</div>
-				<!--개발자 사진-->
-
-				<br>
-
 				<hr>
 				<br>
 				<!-- 경계 -->
 
 				<h2>추천 글 목록</h2>
 				<br>
-
 				<div class="card-columns mb-3">
 					<%--    <c:set var="flist" value="${flist}" /> --%>
 					<c:forEach var="glist" items="${glist}" varStatus="status">

@@ -211,4 +211,10 @@ values (#{cat},#{author},HOBBY_SQ_NUM.NEXTVAL)
  </delete>
 
 
+<!-- 사용자가 작성할 글 리스트 -->
+<select id="getMyWriteList" parameterType="String" resultMap="BoardMap">
+	SELECT * FROM mainboard WHERE author = #{id} and ref = 0 and ROWNUM <![CDATA[ <= ]]> 20 ORDER BY num desc
+</select>
+
+
 </mapper>

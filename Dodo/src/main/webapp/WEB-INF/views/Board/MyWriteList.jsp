@@ -1,104 +1,51 @@
-<%@ page contentType="text/html; charset= UTF-8" pageEncoding="UTF-8"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="sec"
-	uri="http://www.springframework.org/security/tags"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="sec" uri = "http://www.springframework.org/security/tags" %>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8">
-<title>Dodo 공지사항 상세 읽기</title>
-<link
-	href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css"
-	rel="stylesheet">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title> Test </title>
+<link rel="stylesheet"
+	href="//maxcdn.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.min.css">
 <meta name="description"
-	content="A Bootstrap 4 admin dashboard theme that will get you started. The sidebar 
-    toggles off-canvas on smaller screens. This example also include large stat blocks, modal and cards. 
-    The top navbar is controlled by a separate hamburger toggle button." />
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	content="A Bootstrap 4 admin dashboard theme that will get you started. The sidebar toggles off-canvas on smaller screens. This example also include large stat blocks, modal and cards. The top navbar is controlled by a separate hamburger toggle button." />
 <meta name="generator" content="Codeply">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<script src="<c:url value="/resources/jquery-3.1.1.min.js" />"></script>
+<script src="<c:url value="/resources/jquery.bootpag.min.js" />"></script>
+<link
+	href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css"
+	rel="stylesheet">
+<script
+	src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
 <link rel="stylesheet"
 	href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" />
 <link rel="stylesheet" href="../../resources/css/styles.css" />
+<link rel="stylesheet"
+	href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <link rel="stylesheet" href="../../resources/css/main.css" />
-<script src="<c:url value="/resources/jquery-3.1.1.min.js" />"></script>
-<style type="text/css">
-.notice {
-	width: 600px;
-	padding: 20px;
-	background-color: #fafafa;
-	border-left: 6px solid #7f7f84;
-	margin-bottom: 30px;
-	-webkit-box-shadow: 0 5px 8px -6px rgba(0, 0, 0, .2);
-	-moz-box-shadow: 0 5px 8px -6px rgba(0, 0, 0, .2);
-	box-shadow: 0 5px 8px -6px rgba(0, 0, 0, .2);
-}
-
-.notice-sm {
-	padding: 10px;
-	font-size: 80%;
-}
-
-.notice-lg {
-	padding: 35px;
-	font-size: large;
-}
-
-.notice-success {
-	border-color: #80D651;
-}
-
-.notice-success>strong {
-	color: #80D651;
-}
-
-.notice-info {
-	border-color: #45ABCD;
-}
-
-.notice-info>strong {
-	color: #45ABCD;
-}
-
-.notice-file {
-	border-color: black;
-}
-
-.notice-file>strong {
-	color: #black;
-}
-
-.notice-warning {
-	border-color: #FEAF20;
-}
-
-.notice-warning>strong {
-	color: #FEAF20;
-}
-
-.notice-danger {
-	border-color: #d73814;
-}
-
-.notice-danger>strong {
-	color: #d73814;
-}
-
-#repple {
-	
-}
-</style>
-<script>
-	
-</script>
+<script> </script>
 <style>
-#t {
-	width: 600px;
-	margin: 0px auto;
+th {
+	text-align: center;
 }
+
+.td {
+	text-align: center;
+}
+.conteiner {
+	width: 1250px;
+	margin: 0px auto;
+	text-align: center;
+}
+
 </style>
 </head>
 <body>
-	<nav
+<nav
 		class="navbar navbar-fixed-top navbar-toggleable-sm navbar-inverse bg-primary mb-3">
 		<button class="navbar-toggler navbar-toggler-right" type="button"
 			data-toggle="collapse" data-target="#collapsingNavbar">
@@ -113,10 +60,9 @@
 			</button>
 		</div>
 		<div class="navbar-collapse collapse" id="collapsingNavbar">
-			
 
 
-			<!-- 게스트 아이콘 표시 -->
+			<!-- 게스트 전용 아이콘 표시 -->
 			<ul class="navbar-nav ml-auto">
 				<li class="nav-item"><a class="nav-link" href=""
 					style="color: Black;"><sec:authorize
@@ -136,10 +82,8 @@
 				<!-- 유저전용 아이콘 표시 -->
 				<sec:authorize access="hasAuthority('USER')">
 					<li class="nav-item"><a class="nav-link" href=""
-						style="color: white;"><sec:authentication var="USERID"
-								property="principal" />${USERID.username}님</a> <%-- <a href="<c:url value='/BP/User/logout' />">로그아웃</a> --%>
-
-					</li>
+						style="color: white;"><sec:authentication property="name" />님</a>
+						<%-- <a href="<c:url value='/BP/User/logout' />">로그아웃</a> --%></li>
 					<li class="nav-item"><a class="nav-link"
 						href="../../bc/main/write"> <i class="fa fa-pencil fa-3x"
 							aria-hidden="true" style="color: white; margin-right: 15px;"></i></a>
@@ -164,15 +108,14 @@
 						href="../../uc/User/logout"> <i class="fa fa-sign-out fa-3x"
 							style="color: white; margin-right: 15px;" aria-hidden="true"></i></a>
 					</li>
-					<c:set var="USERID" scope="session" value="${USERID.username}"></c:set>
 				</sec:authorize>
 			</ul>
 		</div>
 	</nav>
 <!-- /nav -->
 
-	<!-- 사이드바 시작 -->
-	<!-- container -->
+<!-- 사이드바 시작 -->
+<!-- main container -->
 	<div class="container-fluid" id="main">
 		<div class="row row-offcanvas row-offcanvas-left">
 			<div class="col-md-3 col-lg-2 sidebar-offcanvas" id="sidebar"
@@ -217,58 +160,67 @@
 			</div>
 
 
-
 			<div class="col-md-9 col-lg-10 main">
-				<div class="alert alert-warning fade collapse" role="alert"
-					id="myAlert">
-					<button type="button" class="close" data-dismiss="alert"
-						aria-label="Close">
-						<span aria-hidden="true">×</span> <span class="sr-only">Close</span>
-					</button>
-					<strong>Holy guacamole!</strong> It's free.. this is an example
-					theme.
+				<div class="card"
+					style="margin-right: 1px; margin-left: 0px; height: 200px;">
+					<div class="card-block">그림</div>
 				</div>
-				<hr>
+				<div class="conteiner">
+						<hr>
+						<br>
+				<h3 style ="color:red;">
+				   	최신 글 20개만 출력 합니다. 			
+				</h3>
+				<br>
+						<table id="table" class="table table-condensed">
+							<thead>
+								<tr>
+									<th class="th1">글번호</th>
+									<th class="th1">카테고리</th>
+									<th class="th1">작성자</th>
+									<th class="titleList">글 제 목</th>
+									<th class="th1">추천</th>
+									<th class="th1">조회</th>
+									<th class="th1">첨부</th>
+								</tr>
+							</thead>
+							<tbody>
+								<c:forEach var="list" items="${wList}">
+									<tr>
+										<td>${list.num}</td>
+										<td>${list.cat}</td>
 
-				<div id="t">
-					<div class="well">
-						<div class="container">
-							<div class="notice notice-success">
-								<strong>제목</strong> ${read.atitle}
-							</div>
-							<div class="notice notice-danger">
-								<strong>작성자</strong>${read.gm}
-							</div>
-							<div class="notice notice-info">
-								<strong>작성일</strong> ${read.adate}
-							</div>
-							<div class="notice notice-lg">
-								<strong>내용</strong> ${read.acontents}
-							</div>
-							<div class="notice notice-sm" style="text-align: center;">
-								<strong><button class="btn btn-default"
-										onclick="location.href='notice?page=1'">목록</button>&emsp;&emsp;
-							</div>
-						</div>
+										<td>${list.author}</td>
+
+										<!-- 댓글 -->
+										<td class="td"><a
+											href="read?num=${list.num}&readcnt=${list.readcnt}">${list.title}</a>
+											<c:forEach var="comment" items="${comment}">
+												<c:if test="${comment.ref == list.num}">
+													<span class="badge"
+														style="margin-left: 5px; background-color: gray;">${comment.cnt}</span>
+												</c:if>
+											</c:forEach></td>
+
+										<td>${list.goodcnt}</td>
+										<td>${list.readcnt}</td>
+										<td><c:if test="${list.fenabled==1}">
+												<i class="material-icons" style="font-size: 15px;">attachment</i>
+											</c:if></td>
+									</tr>
+								</c:forEach>
+						</table>
+						</tbody>
 					</div>
 				</div>
 			</div>
 		</div>
-	</div>
-	<!--/container -->
-
-	<br>
-	<br>
-	<hr>
-	<footer class="container-fluid">
-		<p class="text-right small">ⓒ2016-2017 Company</p>
-	</footer>
-	<script
-		src="//ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-	<script
-		src="//cdnjs.cloudflare.com/ajax/libs/tether/1.2.0/js/tether.min.js"></script>
-	<script
-		src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script>
-	<script src="../../resources/js/scripts.js"></script>
+		<hr>
+<!-- main container -->
+		<script
+			src="//cdnjs.cloudflare.com/ajax/libs/tether/1.2.0/js/tether.min.js"></script>
+		<script
+			src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script>
+		<script src="../../resources/js/scripts.js"></script>
 </body>
 </html>

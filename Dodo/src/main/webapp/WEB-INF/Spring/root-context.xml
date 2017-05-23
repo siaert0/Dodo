@@ -30,14 +30,6 @@
     	 <logout logout-success-url="/uc/User/loginform" />
         
     </http> 
-    
- <!--    <beans:bean id="dataSource" class="org.apache.tomcat.jdbc.pool.DataSource">
-        <beans:property name="driverClassName"  value="oracle.jdbc.OracleDriver" />
-        <beans:property name="url"  value="jdbc:oracle:thin:@192.168.0.119:1521:xe"  />
-        <beans:property name="username"  value="scott"  />
-        <beans:property name="password"  value="TIGER"/>
-    </beans:bean> -->
-	 
 	
  <beans:bean id="dataSource" class="oracle.jdbc.pool.OracleDataSource">
       <beans:property name="dataSourceName" value="ds"/>

@@ -14,22 +14,22 @@ import org.springframework.beans.factory.annotation.*;
 import org.springframework.stereotype.*;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.*;
 
 @Controller
 @RequestMapping("bc/") // 게시판 컨트롤러
 public class BoardCont {
 
 	@Autowired
-	private BoardSVC svc;
+	private BoardSVC bsvc;
 
 	
 	// 리스트 출력
 	@RequestMapping(value = "main/boardList", method = RequestMethod.GET)
 	public String getBoardList(BoardListVO blist, HttpSession session, Model model) {
-		List<BoardListVO> list = svc.getBoardList(blist);
-		List<BoardListVO> cntlist = svc.getCommentcnt(); // 댓글수
+		List<BoardListVO> list = bsvc.getBoardList(blist);
+		List<BoardListVO> cntlist = bsvc.getCommentcnt(); // 댓글수
 
-		System.out.println("토탈" + list.get(0).getTotal());
 		session.setAttribute("comment", cntlist);
 		session.setAttribute("list", list);
 		session.setAttribute("total", list.get(0).getTotal());
@@ -42,8 +42,8 @@ public class BoardCont {
 	@RequestMapping(value = "main/boardList", method = RequestMethod.POST)
 	@ResponseBody
 	public JSONArray getPage(BoardListVO blist, HttpSession session) {
-		List<BoardListVO> list = svc.getBoardList(blist);
-		List<BoardListVO> cntlist = svc.getCommentcnt();
+		List<BoardListVO> list = bsvc.getBoardList(blist);
+		List<BoardListVO> cntlist = bsvc.getCommentcnt();
 		session.setAttribute("total", list.get(0).getTotal());
 		session.setAttribute("page", list.get(0).getPage());
 		JSONObject jsonCist = new JSONObject();
@@ -61,11 +61,11 @@ public class BoardCont {
 	@RequestMapping(value = "main/read", method = RequestMethod.GET)
 	public String getRead(BoardListVO blist, HttpSession session) {
 		System.out.println("조회수: " + blist.getReadcnt());
-		svc.setReadcnt(blist); // 조회수 저장
-		BoardListVO vo = svc.getRead(blist); // 글불러오기
-		BoardVO bvo = svc.getBfile(blist); // 파일불러오기
-		BoardVO rvo = svc.getRipple(blist); // 댓글불러오기
-		List<BoardListVO> clist = svc.getCommentcnt(); // 댓글수불러오기
+		bsvc.setReadcnt(blist); // 조회수 저장
+		BoardListVO vo = bsvc.getRead(blist); // 글불러오기
+		BoardVO bvo = bsvc.getBfile(blist); // 파일불러오기
+		BoardVO rvo = bsvc.getRipple(blist); // 댓글불러오기
+		List<BoardListVO> clist = bsvc.getCommentcnt(); // 댓글수불러오기
 		session.setAttribute("fname", bvo);
 		session.setAttribute("read", vo);
 		session.setAttribute("ripple", rvo);
@@ -79,9 +79,9 @@ public class BoardCont {
 	@ResponseBody
 	public JSONArray search(BoardListVO blist, HttpSession session) {
 		System.out.println("검색내용 :" + blist.getSearchI() + "검색카테고리" + blist.getSearchS() + "페이지" + blist.getPage());
-		BoardVO vo = svc.getSearch(blist);
+		BoardVO vo = bsvc.getSearch(blist);
 		List<BoardListVO> list = vo.getBlist();
-		List<BoardListVO> cntlist = svc.getCommentcnt();
+		List<BoardListVO> cntlist = bsvc.getCommentcnt();
 		JSONObject jsonCist = new JSONObject();
 		JSONObject jsonCntlist = new JSONObject();
 		JSONArray jsonArr = new JSONArray();
@@ -106,7 +106,7 @@ public class BoardCont {
 	public String comment(BoardListVO blist, HttpSession session) {
 		blist.setAuthor((String) session.getAttribute("USERID"));
 		System.out.println(blist.getAuthor());
-		String res = svc.setcomment(blist);
+		String res = bsvc.setcomment(blist);
 		return res;
 	}
 
@@ -115,7 +115,7 @@ public class BoardCont {
 	@RequestMapping(value = "main/write", method = RequestMethod.POST)
 	public String write(BoardListVO blist, HttpSession session, BfileVO fvo) {
 		blist.setAuthor((String) session.getAttribute("USERID"));
-		ArrayList<BfileVO> res = svc.write(blist, fvo);
+		ArrayList<BfileVO> res = bsvc.write(blist, fvo);
 		return "redirect:boardList?page=1&cat="+blist.getCat();
 	}
 
@@ -123,7 +123,7 @@ public class BoardCont {
 	// 글수정페이지로 이동
 	@RequestMapping(value = "main/edit", method = RequestMethod.GET)
 	public String getEditPage(BoardListVO blist, HttpSession session) {
-		BoardListVO bv = svc.getRead(blist);
+		BoardListVO bv = bsvc.getRead(blist);
 		session.setAttribute("read", bv);
 		return "Board/BoardEdit";
 	}
@@ -133,7 +133,7 @@ public class BoardCont {
 	@RequestMapping(value = "main/edit", method = RequestMethod.POST, produces = "application/text; charset=utf-8")
 	@ResponseBody
 	public String setEdit(BoardListVO blist, HttpSession session) {
-		String res = svc.setEdit(blist);
+		String res = bsvc.setEdit(blist);
 		return res;
 	}
 
@@ -142,7 +142,7 @@ public class BoardCont {
 	@RequestMapping(value = "main/del", method = RequestMethod.POST, produces = "application/text; charset=utf-8")
 	@ResponseBody
 	public String del(BoardListVO blist) {
-		String res = svc.setDel(blist);
+		String res = bsvc.setDel(blist);
 		return res;
 	}
 
@@ -152,7 +152,7 @@ public class BoardCont {
 	@ResponseBody
 	public boolean setGoodcnt(GoodVO good, HttpSession session) {
 		good.setGoodid((String) session.getAttribute("USERID"));
-		boolean tf = svc.setGoodcnt(good); // 추천인 검사결과 리턴
+		boolean tf = bsvc.setGoodcnt(good); // 추천인 검사결과 리턴
 		return tf;
 	}
 
@@ -175,8 +175,7 @@ public class BoardCont {
 	//공지사항 리스트
 	@RequestMapping(value = "main/notice", method = RequestMethod.GET)
 	public String getNoticeList(BoardListVO blist, HttpSession session) {
-		System.out.println("공지사항리스트?page=" + blist.getPage() + "&cat=" + blist.getCat());
-		List<NoticeVO> list = svc.getNotice(blist).getNlist();
+		List<NoticeVO> list = bsvc.getNotice(blist).getNlist();
 		session.setAttribute("list", list);
 		session.setAttribute("total", list.get(0).getTotal());
 		session.setAttribute("page", list.get(0).getPage());
@@ -188,8 +187,7 @@ public class BoardCont {
 	@RequestMapping(value = "main/notice", method = RequestMethod.POST)
 	@ResponseBody
 	public JSONObject getNoticepage(BoardListVO blist, HttpSession session) {
-		System.out.println("공지사항리스트?page=" + blist.getPage() + "&cat=" + blist.getCat());
-		List<NoticeVO> list = svc.getNotice(blist).getNlist();
+		List<NoticeVO> list = bsvc.getNotice(blist).getNlist();
 		JSONObject jlist = new JSONObject();
 		jlist.put("list", list);
 		session.setAttribute("total", list.get(0).getTotal());
@@ -201,7 +199,7 @@ public class BoardCont {
 	// 공지사항 읽기
 	@RequestMapping(value = "main/nread", method = RequestMethod.GET)
 	public String getNoticeRead(NoticeVO nvo, HttpSession session) {
-		NoticeVO vo = svc.getNoticeRead(nvo).getNlist().get(0); // 글불러오기
+		NoticeVO vo = bsvc.getNoticeRead(nvo).getNlist().get(0); // 글불러오기
 		session.setAttribute("read", vo);
 		return "Board/NoticeRead";
 	}
@@ -211,8 +209,7 @@ public class BoardCont {
 	@RequestMapping(value = "main/addcat", method = RequestMethod.GET)
 	public String setAddCat(BoardListVO blist, HttpSession session) {
 		blist.setAuthor((String) session.getAttribute("USERID"));
-		System.out.println("addcat_ID값 : " + blist.getAuthor() + "cat값" + blist.getCat());
-		List<CategoryVO> list = svc.setAddCat(blist); // 카테고리 저장+유저 카테고리리스트
+		List<CategoryVO> list = bsvc.setAddCat(blist); // 카테고리 저장+유저 카테고리리스트
 		session.setAttribute("cList", list);
 		return "redirect:boardList?page=1&cat=" + blist.getCat();
 	}
@@ -222,8 +219,7 @@ public class BoardCont {
 	@RequestMapping(value = "main/delcat", method = RequestMethod.GET)
 	public String setDelCat(BoardListVO blist, HttpSession session) {
 		blist.setAuthor((String) session.getAttribute("USERID"));
-		System.out.println("delcat_ID값 : " + blist.getAuthor());
-		List<CategoryVO> list = svc.setDelCat(blist); // 카테고리 삭제+유저카테고리리스트
+		List<CategoryVO> list = bsvc.setDelCat(blist); // 카테고리 삭제+유저카테고리리스트
 		session.setAttribute("cList", list);
 		return "redirect:boardList?page=1&cat=" + blist.getCat();
 	}
@@ -233,12 +229,24 @@ public class BoardCont {
 	@RequestMapping(value = "main/ssearch", method = RequestMethod.POST)
     public String sideSearch(BoardListVO blist,HttpSession session){
         String url = "Board/BoardList";
-        System.out.println("검색내용 :" + blist.getSearchI()+"검색카테고리"+blist.getSearchS()+"페이지"+blist.getPage());
-        BoardVO vo =svc.getSearch(blist);
+        BoardVO vo =bsvc.getSearch(blist);
         if(vo == null){return url="Board/ListSearchNull";}
         else{
         session.setAttribute("list", vo.getBlist());
-        session.setAttribute("commend", svc.getCommentcnt());}
+        session.setAttribute("commend", bsvc.getCommentcnt());}
          return url;
      }
+	
+	
+	// 내가 쓴 글 리스트
+	@RequestMapping(value="main/writeList", method = RequestMethod.GET)
+	public ModelAndView getMyWriteList(@RequestParam String id){
+		BoardVO vo = bsvc.getMyWriteList(id);
+		ModelAndView mav = new ModelAndView();
+		System.out.println(vo.getBlist().get(0).getAuthor());
+		mav.addObject("wList", vo.getBlist());
+		
+		mav.setViewName("Board/MyWriteList");
+		return mav;
+	}
 }

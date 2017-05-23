@@ -8,7 +8,6 @@ import org.dodo.vo.*;
 
 public interface BoardDAO {
 
-
 	public BoardVO getBoardList(BoardListVO blist); //리스트+페이지
 	
 	public BoardListVO getRead(BoardListVO blist); //글읽기
@@ -27,10 +26,6 @@ public interface BoardDAO {
 	
 	public BoardVO getgoodList(); //최신글 6개(=메인용)
 
-	
-	
-	
-
 	public int setWrite(BoardListVO blist); //글저장+댓글
 	
 	public void setFsave(BfileVO fvo);  //파일저장
@@ -45,8 +40,7 @@ public interface BoardDAO {
 
 	public void setReadcnt(BoardListVO blist);
 
-
-	public BoardVO getNoticeBoard();
+	public BoardVO getNoticeBoard(); 
 
 	public BoardVO getNotice(BoardListVO blist); //공지사항리스트 전체
 
@@ -56,16 +50,6 @@ public interface BoardDAO {
 
 	public void setDelCat(BoardListVO blist); // 관심분야 제거
 
-	
-
-
-	
-
-
-	
-
-
-
-
+	public BoardVO getMyWriteList(String id); // 사용자가 쓴 글 리스트
 
 }

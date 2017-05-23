@@ -162,7 +162,4 @@
 
 
   </dependencies>
-  <build>
-    <finalName>LHB_Blog</finalName>
-  </build>
 </project>

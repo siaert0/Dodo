@@ -55,10 +55,13 @@ td {
          uhobby = $('.hobby1'),
          uphone = $('#phone1');
       
+      
+      // strong 태그 추가
       $('#id1, #pwd1').after('<strong></strong>');
       
       
       
+      // 아아디 입력시 keyup 이벤트 발생으로 즉각적인 ID 가능여부 확인
       uid.keyup(function() {   
          var s = $(this).next('strong'); 
          if (uid.val().length == 0) { 
@@ -74,7 +77,7 @@ td {
       
       
       
-      
+      // 비밀번호 입력시 keyup 이벤트 발생으로 즉각적인 비밀번호 가능여부 확인
       upw.keyup(function() { 
          var s = $(this).next('strong'); 
          if (upw.val().length == 0) { 
@@ -89,7 +92,9 @@ td {
       });
       
       
-      uphone.keydown(function() {  // 폰번호 입력시 '-' 방지
+      
+  	// 폰번호 입력시 '-' 방지
+      uphone.keydown(function() {  
          if(event.keyCode==109 || event.keyCode==189) {
             return false;
          }

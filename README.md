@@ -1,4 +1,4 @@
-# Community Board - Dodo (Team Project)
+# Community Board - Dodo (Team -> personal)
 ## System
 
 * JAVA

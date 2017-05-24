@@ -355,8 +355,15 @@ public class BoardSVC {
 	}
 
 
+	// 사용자가 쓴 글 상위 20개 출력
 	public BoardVO getMyWriteList(String id) {
 		BoardDAO bdao = sqlSessionTemplate.getMapper(BoardDAO.class);
 		return bdao.getMyWriteList(id);
+	}
+	
+	public List<BoardListVO> getHobbyGoodList(String cat){
+		BoardDAO bdao = sqlSessionTemplate.getMapper(BoardDAO.class);
+		BoardVO vo = bdao.getHobbyGoodList(cat);
+		return vo.getBlist();
 	}
 }

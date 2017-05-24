@@ -25,27 +25,31 @@ public class BoardCont {
 
 	
 	// 리스트 출력
-	@RequestMapping(value = "main/boardList", method = RequestMethod.GET)
-	public String getBoardList(BoardListVO blist, HttpSession session, Model model) {
+	@RequestMapping(value = "main/boardList")
+	public String getBoardList(
+			BoardListVO blist, HttpSession session, Model model) {
+		List<BoardListVO> hobby_good_List = bsvc.getHobbyGoodList(blist.getCat());
 		List<BoardListVO> list = bsvc.getBoardList(blist);
 		List<BoardListVO> cntlist = bsvc.getCommentcnt(); // 댓글수
-
 		session.setAttribute("comment", cntlist);
 		session.setAttribute("list", list);
 		session.setAttribute("total", list.get(0).getTotal());
 		session.setAttribute("page", list.get(0).getPage());
-
+		model.addAttribute("bestList", hobby_good_List);
 		return "Board/BoardList";
 	}
 
 	
 	@RequestMapping(value = "main/boardList", method = RequestMethod.POST)
 	@ResponseBody
-	public JSONArray getPage(BoardListVO blist, HttpSession session) {
+	public JSONArray getPage(BoardListVO blist, HttpSession session,@RequestParam String cat,
+			@RequestParam int page,Model model) {
+		List<BoardListVO> hobby_good_List = bsvc.getHobbyGoodList(blist.getCat());
 		List<BoardListVO> list = bsvc.getBoardList(blist);
 		List<BoardListVO> cntlist = bsvc.getCommentcnt();
 		session.setAttribute("total", list.get(0).getTotal());
 		session.setAttribute("page", list.get(0).getPage());
+		model.addAttribute("bestList", hobby_good_List);
 		JSONObject jsonCist = new JSONObject();
 		JSONObject jsonCntlist = new JSONObject();
 		JSONArray jsonArr = new JSONArray();

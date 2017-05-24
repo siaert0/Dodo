@@ -7,6 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Dodo 게시판</title>
+<meta id="_csrf" name="_csrf" content="${_csrf.token}" />  
 <link rel="stylesheet"
 	href="//maxcdn.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.min.css">
 <meta name="description"
@@ -135,14 +136,14 @@ $('.pagination').bootpag({
     lastClass: 'last',
     firstClass: 'first'
 }).on("page", function(event, num){
-   var param={};
-   param.cat="${list[0].cat}";
-   param.num= num;
    $.ajax({
-         url:'boardList?$page=num&cat=${boardc}&{_csrf.parameterName}=${_csrf.token}',
+         url:'boardList?cat=${list[0].cat}&page='+num,
          method:'post',
-         data:param,
+         data: num,
          dataType:'json',
+         beforeSend : function(xhr) {
+				xhr.setRequestHeader("${_csrf.headerName}", "${_csrf.token}"); //CSRF토큰
+		},
          success:function(res){
             $('#table').empty();
             $('#table').append("<thead><tr><th>글번호</th><th>카테고리</th><th>작성자</th><th class='titleList'>글 제 목</th><th>추천</th><th>조회</th><th>첨부</th></tr></thead><tbody>");
@@ -166,7 +167,7 @@ $('.pagination').bootpag({
                $('#tr'+i).append("</td></tr>");
             }
             $('#table').append("</tbody>");
-         },error:function(xhr,status,err){alert("에러");}
+         },error:function(xhr,status,err){alert("에러");} 
       });
 });
 });
@@ -360,11 +361,7 @@ th {
 
 
 			<div class="col-md-9 col-lg-10 main">
-				<div class="card"
-					style="margin-right: 1px; margin-left: 0px; height: 200px;">
-					<div class="card-block">그림</div>
-				</div>
-				<hr>
+				Movie<hr>
 				<div class="row mb-3">
 					<div class="col-lg-6" style="padding-right: 5px;">
 						<div class="card card-default card-block">
@@ -420,26 +417,18 @@ th {
 
 								<div class="tab-pane" id="tab3">
 									<div class="list-group">
-										<a href="" class="list-group-item"><span
-											class="float-right label label-info label-pill">44</span> <code>.panel</code>
-											is now <code>.card</code></a> <a href="" class="list-group-item"><span
-											class="float-right label label-info label-pill">8</span> <code>.nav-justified</code>
-											is deprecated</a> <a href="" class="list-group-item"><span
-											class="float-right label label-info label-pill">23</span> <code>.badge</code>
-											is now <code>.label-pill</code></a> <a href=""
-											class="list-group-item text-muted">Message n..</a>
-									</div>
-								</div>
-								<div class="tab-pane" id="tab4">
-									<div class="list-group">
-										<a href="" class="list-group-item"><span
-											class="float-right label label-info label-pill">44</span> <code>.panel</code>
-											is now <code>.card</code></a> <a href="" class="list-group-item"><span
-											class="float-right label label-info label-pill">8</span> <code>.nav-justified</code>
-											is deprecated</a> <a href="" class="list-group-item"><span
-											class="float-right label label-info label-pill">23</span> <code>.badge</code>
-											is now <code>.label-pill</code></a> <a href=""
-											class="list-group-item text-muted">Message n..</a>
+											<c:forEach var="bestList" items="${bestList}" end="4">
+											<a href="" class="list-group-item">
+												<table id="tabl1">
+													<tr>
+														<td class="td1"
+															style="width: 500px; text-align: left; color: black;"><a
+															class="a1" href="../../bc/main/read?num=${bestList.num}">${bestList.title}</a></td>
+														<td style="width: 100px; text-align: right; color: black;">${bestList.author}</td>
+													</tr>
+												</table>
+											</a>
+										</c:forEach>
 									</div>
 								</div>
 							</div>

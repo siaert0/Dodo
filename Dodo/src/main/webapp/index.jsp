@@ -79,8 +79,8 @@
 	<div class="container">
 		<!-- Codrops top bar -->
 		<div class="codrops-top">
-			<a href="http://tympanus.net/Development/RockingLetters/"> <strong>&laquo;
-					Demo: </strong>Community Site
+			<a href="#"> <strong>&laquo;
+					Dodo: </strong>Community-Site
 			</a> <span class="right"> <a href="uc/User/loginform"
 				id="modalbutton" target="_blank">Login </a> <a href="uc/Main/main"
 				target="_blank">바로가기</a> <a href="bc/Board/modal"

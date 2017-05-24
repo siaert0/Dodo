@@ -291,16 +291,6 @@
 
 
 			<div class="col-md-9 col-lg-10 main">
-				<div class="alert alert-warning fade collapse" role="alert"
-					id="myAlert">
-					<button type="button" class="close" data-dismiss="alert"
-						aria-label="Close">
-						<span aria-hidden="true">×</span> <span class="sr-only">Close</span>
-					</button>
-					<strong>Holy guacamole!</strong> It's free.. this is an example
-					theme.
-				</div>
-
 				<div class="row mb-3">
 					<div class="col-lg-6" style="padding-right: 5px;">
 						<div class="card card-default card-block">

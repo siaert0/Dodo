@@ -219,15 +219,6 @@
 
 
 			<div class="col-md-9 col-lg-10 main">
-				<div class="alert alert-warning fade collapse" role="alert"
-					id="myAlert">
-					<button type="button" class="close" data-dismiss="alert"
-						aria-label="Close">
-						<span aria-hidden="true">×</span> <span class="sr-only">Close</span>
-					</button>
-					<strong>Holy guacamole!</strong> It's free.. this is an example
-					theme.
-				</div>
 				<hr>
 
 				<div id="t">

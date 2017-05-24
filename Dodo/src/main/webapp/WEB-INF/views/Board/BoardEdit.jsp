@@ -30,7 +30,7 @@
             dataType:'text',
             success:function(res){
                   alert(res);
-                  location.href = "boardList?page=1";
+                  location.href = "boardList?cat=${boardc}&page=1";
             },error:function(xhr,status,err){alert(err);}
          });
          return false;
@@ -89,7 +89,7 @@ margin: 0px auto;
            			 <a class="nav-link" href="" data-toggle="dropdown">
                       	<i id="pop" class="fa fa-list-alt fa-3x" aria-hidden="true" style="color:white; margin-right:15px;"></i>
                    		 </a>
-                    	<ul class="dropdown-menu dropdown-user" style="left:1270px; ">
+                    <ul class="dropdown-menu dropdown-user" style="left:1270px;">
                     	<c:forEach var="c" items="${cList}">
                         <li><a href="../../bc/main/boardList?page=1&cat=${c.hobby}">${c.hobby}</a></li>
                     	</c:forEach>
@@ -107,7 +107,6 @@ margin: 0px auto;
                 <i class="fa fa-sign-out fa-3x" style="color:white; margin-right:15px;" aria-hidden="true"></i></a>
              </li>
              </sec:authorize>
-        </ul>
     </div>
 </nav>
 
@@ -151,9 +150,9 @@ margin: 0px auto;
 <!-- /main container -->
 
 	<!-- div t -->
+	<br>
 	<div id="t" style="margin: 0px auto; margin-top: -100px;">
 		<form id="form" onsubmit="return edit()" method='post'>
-
 			<div class="input-group">
 				<span class="input-group-addon"
 					style="border-bottom: 0px; width: 100px; height: 30px;">Title&nbsp;&nbsp;&nbsp;

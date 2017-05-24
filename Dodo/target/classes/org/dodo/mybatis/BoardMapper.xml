@@ -216,5 +216,9 @@ values (#{cat},#{author},HOBBY_SQ_NUM.NEXTVAL)
 	SELECT * FROM mainboard WHERE author = #{id} and ref = 0 and ROWNUM <![CDATA[ <= ]]> 20 ORDER BY num desc
 </select>
 
+<!-- 게시판별 추천 글 리스트 -->
+<select id="getHobbyGoodList" parameterType="String" resultMap="BoardMap">
+	SELECT * FROM mainboard WHERE hobby = #{cat} ORDER BY goodcnt DESC
+</select>
 
 </mapper>

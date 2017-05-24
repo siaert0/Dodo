@@ -41,6 +41,12 @@ body p {
 h2 {
 	text-align: center;
 }
+
+#col7{
+	work-break:keep-all;
+	word-wrap:break-all;
+	width: 300px;
+}
 </style>
 </head>
 
@@ -149,7 +155,7 @@ h2 {
 							<li class="nav-item"><a class="nav-link"
 								href="../../bc/main/boardList?cat=IT&page=1">IT</a></li>
 							<li class="nav-item"><a class="nav-link"
-								href="../../bc/main/boardList?cat=Sprots&page=1">스포츠</a></li>
+								href="../../bc/main/boardList?cat=Sports&page=1">스포츠</a></li>
 							<li class="nav-item"><a class="nav-link"
 								href="../../bc/main/boardList?cat=Music&page=1">음악</a></li>
 							<li class="nav-item"><a class="nav-link"
@@ -186,17 +192,18 @@ h2 {
 											</a>
 										</c:forEach>
 										<a href="../../bc/main/notice?page=1"
-											class="btn btn-info btn-block">Read More</a>
+											class="btn btn-info btn-block">Read More Notice</a>
 									</div>
 								</div>
 
 
 								<div class="tab-pane" id="tab2">
 									<div class="row">
-										<div class="col-sm-7">
-											<h4>Profile Section</h4>
-											<p>Imagine creating this simple user profile inside a tab
-												card.</p>
+										<div class="col-sm-7" id="col7">
+											<h4>Welcome to Dodo!!</h4>
+											저희 커뮤니티 사이트를 방문해 주셔서 감사합니다. 
+											언제나 기분 좋은 커뮤니티 사이트 Dodo가 되도록 노력하겠습니다.
+											감사합니다.									
 										</div>
 										<div class="col-sm-5">
 											<img src="//placehold.it/170"
@@ -204,8 +211,7 @@ h2 {
 										</div>
 									</div>
 									<hr>
-									<a href="javascript:;" class="btn btn-info btn-block">Read
-										More Profiles</a>
+									<a href="javascript:;" class="btn btn-info btn-block">운영자 Jin</a>
 									<div class="spacer5"></div>
 								</div>
 
@@ -223,7 +229,7 @@ h2 {
 						style="margin-right: 5px; margin-left: 0px; width: 610px;">
 						<div class="card-block">
 							<h4 class="card-title">추천 Best</h4>
-							<p class="card-text">This card has supporting text below as a
+							<p class="card-text" id="ct">This card has supporting text below as a
 								natural lead-in to additional content.</p>
 							<p class="card-text">
 								<small class="text-muted">Last updated 3 mins ago</small>

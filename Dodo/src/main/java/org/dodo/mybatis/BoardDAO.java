@@ -51,5 +51,7 @@ public interface BoardDAO {
 	public void setDelCat(BoardListVO blist); // 관심분야 제거
 
 	public BoardVO getMyWriteList(String id); // 사용자가 쓴 글 리스트
+	
+	public BoardVO getHobbyGoodList(String cat);
 
 }

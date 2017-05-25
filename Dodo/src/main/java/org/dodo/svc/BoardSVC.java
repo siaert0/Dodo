@@ -361,9 +361,33 @@ public class BoardSVC {
 		return bdao.getMyWriteList(id);
 	}
 	
+	// 관심분야 추천글 리스트 
 	public List<BoardListVO> getHobbyGoodList(String cat){
 		BoardDAO bdao = sqlSessionTemplate.getMapper(BoardDAO.class);
 		BoardVO vo = bdao.getHobbyGoodList(cat);
 		return vo.getBlist();
+	}
+	
+	public String getHobbyIcon(BoardListVO blist){
+		String cat = blist.getCat();
+		String iconName = null;
+			if (cat.equalsIgnoreCase("Game")) {
+				return iconName = "fa fa-gamepad";
+			} else if (cat.equalsIgnoreCase("IT")) {
+				return iconName = "fa fa-desktop";
+			} else if (cat.equalsIgnoreCase("Movie")) {
+				return iconName = "fa fa-youtube-play";
+			} else if (cat.equalsIgnoreCase("Sports")) {
+				return iconName = "fa fa-trophy";
+			} else if (cat.equalsIgnoreCase("music")) {
+				return iconName = "fa fa-music";
+			} else if (cat.equalsIgnoreCase("Fashion")) {
+				return iconName = "fa fa-shopping-cart";
+			} else if (cat.equalsIgnoreCase("Travel")) {
+				return iconName = "fa fa-plane";
+			} else if (cat.equalsIgnoreCase("Love")) {
+				return iconName = "fa fa-heart";
+			}
+			return iconName;
 	}
 }

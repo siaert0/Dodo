@@ -25,17 +25,18 @@ public class BoardCont {
 
 	
 	// 리스트 출력
-	@RequestMapping(value = "main/boardList")
+	@RequestMapping(value = "main/boardList", method = RequestMethod.GET)
 	public String getBoardList(
 			BoardListVO blist, HttpSession session, Model model) {
 		List<BoardListVO> hobby_good_List = bsvc.getHobbyGoodList(blist.getCat());
 		List<BoardListVO> list = bsvc.getBoardList(blist);
-		List<BoardListVO> cntlist = bsvc.getCommentcnt(); // 댓글수
+		List<BoardListVO> cntlist = bsvc.getCommentcnt(); 
 		session.setAttribute("comment", cntlist);
 		session.setAttribute("list", list);
 		session.setAttribute("total", list.get(0).getTotal());
 		session.setAttribute("page", list.get(0).getPage());
 		model.addAttribute("bestList", hobby_good_List);
+		model.addAttribute("icon",bsvc.getHobbyIcon(blist));
 		return "Board/BoardList";
 	}
 

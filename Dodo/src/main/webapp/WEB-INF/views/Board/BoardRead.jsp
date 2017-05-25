@@ -289,98 +289,15 @@
 			</div>
 
 
-
-			<div class="col-md-9 col-lg-10 main">
-				<div class="row mb-3">
-					<div class="col-lg-6" style="padding-right: 5px;">
-						<div class="card card-default card-block">
-							<ul id="tabsJustified" class="nav nav-tabs nav-justified">
-								<li class="nav-item"><a class="nav-link active" href=""
-									data-target="#tab1" data-toggle="tab">공지사항</a></li>
-								<li class="nav-item"><a class="nav-link " href=""
-									data-target="#tab2" data-toggle="tab">영화소개</a></li>
-								<li class="nav-item"><a class="nav-link" href=""
-									data-target="#tab3" data-toggle="tab">Weekly Best!</a></li>
-							</ul>
-							<!--/tabs-->
-							<br>
-							<div id="tabsJustifiedContent" class="tab-content">
-								<div class="tab-pane active" id="tab1">
-									<div class="list-group">
-										<c:forEach var="nList" items="${nList}" end="3">
-											<a href="" class="list-group-item">
-												<table id="tabl1">
-													<tr>
-														<td class="td1"
-															style="width: 500px; text-align: left; color: black;"><a
-															class="a1" href="../../bc/main/nread?anum=${nList.anum}">＊${nList.atitle}</a></td>
-														<td style="width: 100px; text-align: right; color: black;">★${nList.gm}</td>
-													</tr>
-												</table>
-											</a>
-										</c:forEach>
-										<a href="../../bc/main/notice?page=1"
-											class="btn btn-info btn-block">Read More</a>
-									</div>
-								</div>
-
-
-								<div class="tab-pane " id="tab2">
-									<div class="row">
-										<div class="col-sm-7">
-											<h4>Profile Section</h4>
-											<p>Imagine creating this simple user profile inside a tab
-												card.</p>
-										</div>
-										<div class="col-sm-5">
-											<img src="//placehold.it/170"
-												class="float-right img-responsive img-rounded">
-										</div>
-									</div>
-									<hr>
-									<a href="../../bc/main/notice?page=1"
-										class="btn btn-info btn-block">Read More Profiles</a>
-									<div class="spacer5"></div>
-								</div>
-
-
-								<div class="tab-pane" id="tab3">
-									<div class="list-group">
-										<a href="" class="list-group-item"><span
-											class="float-right label label-info label-pill">44</span> <code>.panel</code>
-											is now <code>.card</code></a> <a href="" class="list-group-item"><span
-											class="float-right label label-info label-pill">8</span> <code>.nav-justified</code>
-											is deprecated</a> <a href="" class="list-group-item"><span
-											class="float-right label label-info label-pill">23</span> <code>.badge</code>
-											is now <code>.label-pill</code></a> <a href=""
-											class="list-group-item text-muted">Message n..</a> <a href=""
-											class="list-group-item text-muted">Message n..</a>
-									</div>
-								</div>
-							</div>
-							<!--/tabs content-->
-						</div>
-						<!--/card card-default card-block-->
-					</div>
-					<!--/col lg 6-->
-
-					<div class="card" style="margin-right: 5px; margin-left: 0px;">
-						<div class="card-block">
-							<h4 class="card-title">Card title</h4>
-							<p class="card-text">This card has supporting text below as a
-								natural lead-in to additional content.</p>
-							<p class="card-text">
-								<small class="text-muted">Last updated 3 mins ago</small>
-							</p>
-						</div>
-					</div>
-				</div>
-				<hr>
-
-				<div id="t">
-					<div class="well">
-						<div class="container">
-							<div class="notice notice-success">
+<div class="col-md-9 col-lg-10 main">
+		<br>
+		<hr>
+		<br>
+	<div class="row mb-3">
+		<div id="t">
+			<div class="well">
+				<div class="container">
+					<div class="notice notice-success">
 								<strong>제목</strong> ${read.title}
 							</div>
 							<div class="notice notice-danger">
@@ -459,15 +376,14 @@ File : ${fname.fname1}&nbsp;&nbsp; Filesize  : ${fname.fsize} kb&nbsp;&nbsp;
 											<p>
 											<hr>
 										</c:forEach>
-									</div>
-								</div>
 							</div>
-						</table>
+						</div>
 					</div>
-				</div>
+				</table>
 			</div>
 		</div>
 	</div>
+</div>
 	<!--/main container-->
 
 

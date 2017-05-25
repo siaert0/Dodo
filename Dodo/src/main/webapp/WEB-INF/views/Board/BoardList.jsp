@@ -30,7 +30,9 @@
 <link rel="stylesheet" href="../../resources/css/main.css" />
 <script type="text/javascript">
  
-// 게시판 내에서의 검색
+/*
+	검색
+*/
  function search()
    {
       var param= {};
@@ -118,7 +120,9 @@
          });
    }
   
-// 페이지 네이션
+/* 
+ * 페이지 네이션
+ */
 $(function(){
 $('.pagination').bootpag({
     total: "${total}",         
@@ -361,15 +365,13 @@ th {
 
 
 			<div class="col-md-9 col-lg-10 main">
-				Movie<hr>
+				<i class="${icon} fa-3x" aria-hidden="true"><hr></i>
 				<div class="row mb-3">
 					<div class="col-lg-6" style="padding-right: 5px;">
 						<div class="card card-default card-block">
 							<ul id="tabsJustified" class="nav nav-tabs nav-justified">
 								<li class="nav-item"><a class="nav-link active" href=""
 									data-target="#tab1" data-toggle="tab">공지사항</a></li>
-								<li class="nav-item"><a class="nav-link" href=""
-									data-target="#tab2" data-toggle="tab">게시판소개</a></li>
 								<li class="nav-item"><a class="nav-link" href=""
 									data-target="#tab3" data-toggle="tab">추천 Best!</a></li>
 							</ul>
@@ -394,27 +396,6 @@ th {
 											class="btn btn-info btn-block">Read More</a>
 									</div>
 								</div>
-
-
-								<div class="tab-pane" id="tab2">
-									<div class="row">
-										<div class="col-sm-7">
-											<h4>이용 안내</h4>
-											<p>각 게시판의 특징의 맞게 카테고리를 지정해 주시고, 폭언 및 욕설은 금합니다. 좋은 인터넷 문화를
-												만듭시다.</p>
-										</div>
-										<div class="col-sm-5">
-											<img src="//placehold.it/170"
-												class="float-right img-responsive img-rounded">
-										</div>
-									</div>
-									<hr>
-									<a href="javascript:;" class="btn btn-info btn-block">Read
-										More Profiles</a>
-									<div class="spacer5"></div>
-								</div>
-
-
 								<div class="tab-pane" id="tab3">
 									<div class="list-group">
 											<c:forEach var="bestList" items="${bestList}" end="4">

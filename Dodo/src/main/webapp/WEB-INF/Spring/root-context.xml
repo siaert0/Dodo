@@ -28,7 +28,10 @@
         />
          <csrf disabled="false"/>
     	 <logout logout-success-url="/uc/User/loginform" />
-        
+        <session-management>
+			<concurrency-control max-sessions="1"  
+			expired-url="/uc/User/loginform"/>
+		</session-management>
     </http> 
 	
  <beans:bean id="dataSource" class="oracle.jdbc.pool.OracleDataSource">

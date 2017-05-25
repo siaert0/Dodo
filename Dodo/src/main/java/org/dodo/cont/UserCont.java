@@ -75,6 +75,8 @@ public class UserCont {
 	@RequestMapping(value = "User/logout")
 	public String isUserLogout(HttpSession session) {
 		System.out.println("유저 로그아웃 돌아감!");
+		String id = (String) session.getAttribute("USERID");
+		System.out.println("삭제된 세션"+id);
 		session.removeAttribute("USERID");
 		return "User/LoginForm";
 	}

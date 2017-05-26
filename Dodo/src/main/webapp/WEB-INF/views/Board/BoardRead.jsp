@@ -264,7 +264,7 @@
 						</form>
 					</li>
 					<!-- 사이드바 검색기능 -->
-					<li class="nav-item"><a class="nav-link" href="#submenu1"
+					<li class="nav-item"><a class="nav-ink" href="#submenu1"
 						data-toggle="collapse" data-target="#submenu1">게시판 리스트▾</a>
 						<ul class="list-unstyled flex-column pl-3 collapse" id="submenu1"
 							aria-expanded="false">
@@ -279,7 +279,7 @@
 							<li class="nav-item"><a class="nav-link"
 								href="../../bc/main/boardList?cat=IT&page=1">IT</a></li>
 							<li class="nav-item"><a class="nav-link"
-								href="../../bc/main/boardList?cat=Sprots&page=1">스포츠</a></li>
+								href="../../bc/main/boardList?cat=Sports&page=1">스포츠</a></li>
 							<li class="nav-item"><a class="nav-link"
 								href="../../bc/main/boardList?cat=Music&page=1">음악</a></li>
 							<li class="nav-item"><a class="nav-link"

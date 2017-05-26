@@ -2,12 +2,10 @@
 ## System
 
 * JAVA
-* Spring framework, Spring Security
 * Oracle
 * Mybatis
-* Bootstrap
-* AJAX
-* jQUERY
+* JavaScript, jQuery, Bootstrap, Ajax
+* Window Spring4 MVC2
 
 ## Functions
 * 글 읽기, 쓰기, 수정, 삭제(댓글이 있을시 삭제 불가)

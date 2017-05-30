@@ -91,12 +91,12 @@ h2 {
 						<%-- <a href="<c:url value='/BP/User/logout' />">로그아웃</a> --%></li>
 					<li class="nav-item"><a class="nav-link"
 						href="../../bc/main/write"> <i class="fa fa-pencil fa-3x"
-							aria-hidden="true" style="color: white; margin-right: 15px;"></i></a>
+							aria-hidden="true" style="color: white; margin-right: 15px;" title="글쓰기"></i></a>
 					</li>
 					<li class="nav-item"><a class="nav-link" href=""
 						data-toggle="dropdown"> <i id="pop"
 							class="fa fa-list-alt fa-3x" aria-hidden="true"
-							style="color: white; margin-right: 15px;"></i>
+							style="color: white; margin-right: 15px;" title="즐겨찾기"></i>
 					</a>
 						<ul class="dropdown-menu dropdown-user" style="left: 1270px;">
 							<c:forEach var="c" items="${cList}">
@@ -107,11 +107,11 @@ h2 {
 						</ul>
 					<li class="nav-item"><a class="nav-link"
 						href="../../mc/Main/setup"> <i class="fa fa-cogs fa-3x"
-							style="color: white; margin-right: 15px;" aria-hidden="true"></i></a>
+							style="color: white; margin-right: 15px;" aria-hidden="true" title="설정"></i></a>
 					</li>
 					<li class="nav-item"><a class="nav-link"
 						href="../../uc/User/logout"> <i class="fa fa-sign-out fa-3x"
-							style="color: white; margin-right: 15px;" aria-hidden="true"></i></a>
+							style="color: white; margin-right: 15px;" aria-hidden="true" title="로그아웃"></i></a>
 					</li>
 				</sec:authorize>
 			</ul>
@@ -229,10 +229,10 @@ h2 {
 						style="margin-right: 5px; margin-left: 0px; width: 610px;">
 						<div class="card-block">
 							<h4 class="card-title">추천 Best</h4>
-							<p class="card-text" id="ct">This card has supporting text below as a
-								natural lead-in to additional content.</p>
+							<p class="card-text" id="ct">추천글 페이지 입니다. 당신은 지금 여행을 떠나야 할때!!!
+								제주도 가고 싶다..</p>
 							<p class="card-text">
-								<small class="text-muted">Last updated 3 mins ago</small>
+								<small class="text-muted">Ulibbkk123 님</small>
 							</p>
 						</div>
 					</div>

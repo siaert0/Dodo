@@ -215,7 +215,7 @@ public class BoardSVC {
 				// 전송된 파일을 서버에 저장하기 위한 절차
 				// String rootPath = getServletContext().getRealPath("/");
 				String sfileName = getFname(fileName);
-				File savedFile = new File("c:/Users/EKHB-PC/Desktop/test/" + sfileName);
+				File savedFile = new File("c:/upload/" + sfileName);
 				item.transferTo(savedFile);// 지정 경로에 파일을 저장함
 				BfileVO fv = new BfileVO();
 				fv.setFname1(fileName);

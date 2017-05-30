@@ -56,8 +56,6 @@ margin: 0px auto;
             <span class="navbar-toggler-icon"></span>
         </button>
     </div>
-    <div class="navbar-collapse collapse" id="collapsingNavbar">
-        
         
         <!-- 게스트 전용 아이콘 표시 -->
         <ul class="navbar-nav ml-auto">
@@ -83,11 +81,11 @@ margin: 0px auto;
 			</li>
          	<li class="nav-item">
                 <a class="nav-link" href="../../bc/main/write" >
-                <i class="fa fa-pencil fa-3x" aria-hidden="true" style="color:white; margin-right:15px;"></i></a>
+                <i class="fa fa-pencil fa-3x" aria-hidden="true" style="color:white; margin-right:15px;" title="글쓰기"></i></a>
             </li>
             <li class="nav-item">
            			 <a class="nav-link" href="" data-toggle="dropdown">
-                      	<i id="pop" class="fa fa-list-alt fa-3x" aria-hidden="true" style="color:white; margin-right:15px;"></i>
+                      	<i id="pop" class="fa fa-list-alt fa-3x" aria-hidden="true" style="color:white; margin-right:15px;" title="즐겨찾기"></i>
                    		 </a>
                     <ul class="dropdown-menu dropdown-user" style="left:1270px;">
                     	<c:forEach var="c" items="${cList}">
@@ -100,14 +98,13 @@ margin: 0px auto;
   
              <li class="nav-item">
                 <a class="nav-link" href="../../mc/Main/setup">
-                <i class="fa fa-cogs fa-3x" style="color:white; margin-right:15px;" aria-hidden="true"></i></a>
+                <i class="fa fa-cogs fa-3x" style="color:white; margin-right:15px;" aria-hidden="true" title="설정"></i></a>
             </li>
              <li class="nav-item">
                 <a class="nav-link" href="../../uc/User/logout" >
-                <i class="fa fa-sign-out fa-3x" style="color:white; margin-right:15px;" aria-hidden="true"></i></a>
+                <i class="fa fa-sign-out fa-3x" style="color:white; margin-right:15px;" aria-hidden="true" title="로그아웃"></i></a>
              </li>
              </sec:authorize>
-    </div>
 </nav>
 
 

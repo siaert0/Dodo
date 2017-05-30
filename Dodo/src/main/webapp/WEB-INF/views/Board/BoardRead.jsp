@@ -112,8 +112,7 @@
 
 	// 추천
 	function goodcnt() {
-		$
-				.ajax({
+		$.ajax({
 					url : 'goodcnt?goodcnt=${read.goodcnt}&num=${read.num}&${_csrf.parameterName}=${_csrf.token}',
 					method : 'post',
 					dataType : 'text',
@@ -151,8 +150,7 @@
 			return;
 		}
 		if (confirm("삭제 할래?")) {
-			$
-					.ajax({
+			$.ajax({
 						url : 'del?num=${read.num}&${_csrf.parameterName}=${_csrf.token}',
 						method : 'post',
 						dataType : 'text',
@@ -189,8 +187,6 @@
 				<span class="navbar-toggler-icon"></span>
 			</button>
 		</div>
-		<div class="navbar-collapse collapse" id="collapsingNavbar">
-
 
 			<!-- 게스트 전용 아이콘 표시 -->
 			<ul class="navbar-nav ml-auto">
@@ -216,31 +212,30 @@
 						<%-- <a href="<c:url value='/BP/User/logout' />">로그아웃</a> --%></li>
 					<li class="nav-item"><a class="nav-link"
 						href="../../bc/main/write"> <i class="fa fa-pencil fa-3x"
-							aria-hidden="true" style="color: white; margin-right: 15px;"></i></a>
+							aria-hidden="true" style="color: white; margin-right: 15px;" title="글쓰기"></i></a>
 					</li>
 					<li class="nav-item"><a class="nav-link" href=""
 						data-toggle="dropdown"> <i id="pop"
-							class="fa fa-list-alt fa-3x" aria-hidden="true"
-							style="color: white; margin-right: 15px;"></i>
+							class="fa fa-list-alt fa-3x" aria-hidden="true" 
+							style="color: white; margin-right: 15px;" title="즐겨찾기"></i>
 					</a>
 						<ul class="dropdown-menu dropdown-user" style="left: 1270px;">
 							<c:forEach var="c" items="${cList}">
-								<li><a href="../../bc/main/boardList?page=1&cat=${c.hobby}">${c.hobby}</a></li>
+								<li><a href="../../bc/main/boardList?cat=${c.hobby}&page=1">${c.hobby}</a></li>
 							</c:forEach>
 							<li class="divider"></li>
 							<li><a href="/Dodo/bc/main/writeList?id=${USERID}">내가 쓴 글</a></li>
 						</ul>
 					<li class="nav-item"><a class="nav-link"
 						href="../../mc/Main/setup"> <i class="fa fa-cogs fa-3x"
-							style="color: white; margin-right: 15px;" aria-hidden="true"></i></a>
+							style="color: white; margin-right: 15px;" aria-hidden="true" title="설정"></i></a>
 					</li>
 					<li class="nav-item"><a class="nav-link"
 						href="../../uc/User/logout"> <i class="fa fa-sign-out fa-3x"
-							style="color: white; margin-right: 15px;" aria-hidden="true"></i></a>
+							style="color: white; margin-right: 15px;" aria-hidden="true" title="로그아웃"></i></a>
 					</li>
 				</sec:authorize>
 			</ul>
-		</div>
 	</nav>
 
 	<!-- 사이드바 시작 -->
@@ -321,7 +316,7 @@ File : ${fname.fname1}&nbsp;&nbsp; Filesize  : ${fname.fsize} kb&nbsp;&nbsp;
 							</div>
 							<div class="notice notice-sm" style="text-align: center;">
 								<strong><button class="btn btn-default"
-										onclick="location.href='boardList?page=1&cat=${boardc}'">목록</button>&emsp;&emsp;
+										onclick="location.href='boardList?cat=${boardc}&page=1'">목록</button>&emsp;&emsp;
 
 									<!-- 로그인 한 유저만 댓글 수정 삭제 추천을 할 수 있음 --> 
 									<sec:authorize access="hasAuthority('USER')">

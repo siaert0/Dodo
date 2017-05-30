@@ -29,10 +29,6 @@
 	href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <link rel="stylesheet" href="../../resources/css/main.css" />
 <script type="text/javascript">
- 
-/*
-	검색
-*/
  function search()
    {
       var param= {};
@@ -177,6 +173,17 @@ $('.pagination').bootpag({
 });
 </script>
 <style type="text/css">
+[data-tooltip-text]:hover:after {
+	content: attr(data-tooltip-text);
+    position: absolute;
+	bottom: 100%;
+	left: 0;
+    background-color: rgba(0, 0, 0, 0.8);
+	color: #FFFFFF;
+	font-size: 12px;
+	z-index: 9999;
+}
+
 .th1 {
 	width: 100px;
 	padding-left: 0.5px;
@@ -263,7 +270,6 @@ th {
 				<span class="navbar-toggler-icon"></span>
 			</button>
 		</div>
-		<div class="navbar-collapse collapse" id="collapsingNavbar">
 
 
 			<!-- 게스트 전용 아이콘 표시 -->
@@ -290,12 +296,12 @@ th {
 						<%-- <a href="<c:url value='/BP/User/logout' />">로그아웃</a> --%></li>
 					<li class="nav-item"><a class="nav-link"
 						href="../../bc/main/write"> <i class="fa fa-pencil fa-3x"
-							aria-hidden="true" style="color: white; margin-right: 15px;"></i></a>
+							aria-hidden="true" style="color: white; margin-right: 15px;" title="글쓰기"></i></a>
 					</li>
 					<li class="nav-item"><a class="nav-link" href=""
 						data-toggle="dropdown"> <i id="pop"
 							class="fa fa-list-alt fa-3x" aria-hidden="true"
-							style="color: white; margin-right: 15px;"></i>
+							style="color: white; margin-right: 15px;" title="즐겨찾기"></i>
 					</a>
 						<ul class="dropdown-menu dropdown-user" style="left: 1270px;">
 							<c:forEach var="c" items="${cList}">
@@ -306,15 +312,14 @@ th {
 						</ul>
 					<li class="nav-item"><a class="nav-link"
 						href="../../mc/Main/setup"> <i class="fa fa-cogs fa-3x"
-							style="color: white; margin-right: 15px;" aria-hidden="true"></i></a>
+							style="color: white; margin-right: 15px;" aria-hidden="true" title="설정"></i></a>
 					</li>
 					<li class="nav-item"><a class="nav-link"
 						href="../../uc/User/logout"> <i class="fa fa-sign-out fa-3x"
-							style="color: white; margin-right: 15px;" aria-hidden="true"></i></a>
+							style="color: white; margin-right: 15px;" aria-hidden="true" title="로그아웃"></i></a>
 					</li>
 				</sec:authorize>
 			</ul>
-		</div>
 	</nav>
 <!-- /nav -->
 

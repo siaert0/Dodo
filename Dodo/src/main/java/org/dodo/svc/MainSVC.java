@@ -59,7 +59,6 @@ public class MainSVC {
 	public int setNewPwdChange(String id, String npwd1) {
 		UserDAO dao = sqlSessionTemplate.getMapper(UserDAO.class);
 		String newPwd = passwordEncoder.encode(npwd1);
-		System.out.println(newPwd);
 		UserVO uvo = new UserVO();
 		uvo.setPwd(newPwd);
 		uvo.setId(id);

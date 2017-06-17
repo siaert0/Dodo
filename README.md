@@ -1,13 +1,15 @@
-# Community Board - Dodo (Team -> personal)
-## System
+# Community Board - Dodo
+Team Project
+---
 
+## 개발환경
 * JAVA
 * Oracle
 * Mybatis
 * JavaScript, jQuery, Bootstrap, Ajax
 * Window Spring4 MVC2
-
-## Functions
+---
+## 기능
 * 글 읽기, 쓰기, 수정, 삭제(댓글이 있을시 삭제 불가)
 * 댓글쓰기, 수정, 삭제 
 * 추천하기
@@ -20,3 +22,4 @@
 * 권한설정 - GUEST는 이용사항이 제한됨 
 * 비밀번호변경
 * 회원탈퇴
+---

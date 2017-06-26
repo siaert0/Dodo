@@ -330,20 +330,7 @@ th {
 			<div class="col-md-3 col-lg-2 sidebar-offcanvas" id="sidebar"
 				role="navigation">
 				<ul class="nav flex-column pl-1">
-					<!-- 사이드바 검색기능 -->
-					<li class="nav-item">
-						<form action="../../bc/main/ssearch" method="post" id="frm">
-							<input type="hidden" class="email" name="${_csrf.parameterName }"
-								value="${_csrf.token }"> <input type="search"
-								id="search" name="searchI"> <input type="hidden"
-								name="searchS" value="title"> <input type="hidden"
-								name="page" value="1"> <a href="#"
-								onclick="$('#frm').submit();"> <i class="fa fa-search fa-2x"
-								style="color: #014c8c; margin-left: 10px;" aria-hidden="true"></i>
-							</a>
-						</form>
-					</li>
-					<!-- 사이드바 검색기능 -->
+					<br>
 					<li class="nav-item"><a class="nav-link" href="#submenu1"
 						data-toggle="collapse" data-target="#submenu1">게시판 리스트▾</a>
 						<ul class="list-unstyled flex-column pl-3 collapse" id="submenu1"
